@@ -1,0 +1,17 @@
+# Entornos virtuales y dependencias locales
+venv/
+.venv/
+__pycache__/
+*.py
+*.pyc
+*.pyo
+*.pyd
+node_modules/
+
+# Archivos de configuración sensible y git
+.env
+.git
+.gitignore
+
+# Archivos temporales o de prueba que vimos en tu estructura
+tempdir/
