@@ -1,18 +1,22 @@
 services:
-  nginx:
-    image: nginx:alpine
-    container_name: proxy-nginx
+  nginx-proxy-manager:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: proxy-manager
+    restart: always
     ports:
-      - "80:80"
+      - "80:80" #HTTP
+      - "81:81" #Adminsitracion de la api
+      - "443:443" #HTTPS
     volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./npm_data:/data
+      - ./npm_letsencrypt:/etc/letsencrypt
     depends_on:
       - app-backend
     networks:
       - red-sebas
 
   servidor-bd:
-    image: mysql:latest
+    image: sebastian1101/mi-api:latest
     container_name: servidor-bd
     restart: always
     environment:
