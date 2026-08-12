@@ -4,9 +4,9 @@ services:
     container_name: proxy-manager
     restart: always
     ports:
-      - "80:80" #HTTP
-      - "81:81" #Adminsitracion de la api
-      - "443:443" #HTTPS
+      - "80:80"
+      - "81:81"
+      - "443:443"
     volumes:
       - ./npm_data:/data
       - ./npm_letsencrypt:/etc/letsencrypt
@@ -16,12 +16,14 @@ services:
       - red-sebas
 
   servidor-bd:
-    image: sebastian1101/mi-api:latest
+    image: mysql:8.0
     container_name: servidor-bd
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: "1234"
       MYSQL_DATABASE: "adso_db"
+    volumes:
+      - db_data:/var/lib/mysql
     networks:
       - red-sebas
 
@@ -39,3 +41,6 @@ services:
 networks:
   red-sebas:
     driver: bridge
+
+volumes:
+  db_data:
