@@ -38,6 +38,20 @@ services:
     networks:
       - red-sebas
 
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: uptime-kuma
+    restart: always
+    ports:
+      - "3001:3001"
+    volumes:
+      - uptime-kuma-data:/app/data
+    networks:
+      - red-sebas
+    uptime-kuma-data:
+    name: uptime-kuma-data
+      
+
 networks:
   red-sebas:
     driver: bridge
