@@ -24,3 +24,15 @@ jobs:
           file: ./backend/Dockerfile
           push: true
           tags: sebastian1101/mi-api:latest
+
+      - name: Desplegar en servidor cloud
+      - uses: appleboy/ssh-action@v1.0.3
+      - with:
+        host: ${{ secrets.SERVER_HOST }}
+        usernme: ${{ secrets.SERVER_USER }}
+        key: ${{ secrets.SERVER_SSH_KEY }}
+        script: | 
+          cd ~/DockerDesplegado
+          docker compose pull app-backend
+          docker compose up -d
+          
