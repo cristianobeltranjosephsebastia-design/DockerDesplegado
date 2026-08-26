@@ -61,7 +61,7 @@ jobs:
           format: 'table'
           exit-code: '1' # Si encuentra falla rompe la ejecucion
           ignore-unfixed: true
-          vuln-type: 'os, library'
+          vuln-type: 'os,library'
           severity: 'CRITICAL, HIGH' # Son los que van a detener la ejecucion
 
       - name: Subir imagen a Docker Hub
