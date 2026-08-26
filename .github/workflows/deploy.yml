@@ -32,7 +32,7 @@ jobs:
   
   #Contruir y desplegar
   build-and-push:
-    needs: test
+    needs: test-and-security # Se agrega el nombre correcto
     runs-on: ubuntu-latest
     steps:
       - name: Descargar codigo
