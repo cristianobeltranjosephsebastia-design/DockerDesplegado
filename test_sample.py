@@ -8,7 +8,7 @@ from backend.sample_app import sample
 
 def test_ejemplo_basico():
     assert 1 + 1 == 2 
-    
+
 @pytest.fixture
 def client():
     sample.config['TESTING'] = True
@@ -17,6 +17,5 @@ def client():
 
 def test_home_status_code(client):
     response = client.get('/')
-    assert response.status_code == 200
-
-
+    # FALLO INTENCIONAL
+    assert response.status_code == 500
