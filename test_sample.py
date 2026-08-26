@@ -4,10 +4,10 @@ import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'backend')))
 
-from backend.sample_app import sample
+from sample_app import sample
 
 def test_ejemplo_basico():
-    assert 1 + 1 == 2 
+    assert 1 + 1 == 2  # nosec B101
     
 @pytest.fixture
 def client():
@@ -17,6 +17,6 @@ def client():
 
 def test_home_status_code(client):
     response = client.get('/')
-    assert response.status_code == 200
+    assert response.status_code == 200 # nosec B101
 
 
